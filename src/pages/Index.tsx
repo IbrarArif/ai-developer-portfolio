@@ -1,17 +1,19 @@
-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Mail, Github, Linkedin, Code2, Brain, Zap, ArrowRight, ExternalLink, ChevronLeft, ChevronRight, Star, Play, Music, FileCode } from "lucide-react";
+import { ChevronDown, Mail, Github, Linkedin, Code2, Brain, Zap, ArrowRight, ExternalLink, ChevronLeft, ChevronRight, Star, Play, Music, FileCode, Twitter, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const Index = () => {
   const [typedText, setTypedText] = useState("");
   const [currentSkill, setCurrentSkill] = useState(0);
   const [currentProjectImage, setCurrentProjectImage] = useState<{[key: number]: number}>({});
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [imageLoading, setImageLoading] = useState<{[key: string]: boolean}>({});
+  const [imageErrors, setImageErrors] = useState<{[key: string]: boolean}>({});
   
-  const fullText = "Building the Future with AI, One App at a Time";
+  const fullText = "Building the Future with AI, Multiple Products at Once";
   const skills = ["FastAPI", "React.js", "LangChain", "OpenAI", "Vector DBs", "Docker"];
   
   useEffect(() => {
@@ -107,6 +109,13 @@ const Index = () => {
     { name: "VLLM", icon: "⚡", description: "High-throughput LLM serving" }
   ];
 
+  const contactInfo = {
+    email: "malikibrarbhutta@gmail.com",
+    linkedin: "https://www.linkedin.com/in/malik-ibrar/",
+    github: "https://github.com/IbrarArif",
+    twitter: "https://twitter.com/MalikIbrar112"
+  };
+
   const nextImage = (projectId: number, totalImages: number) => {
     setCurrentProjectImage(prev => ({
       ...prev,
@@ -121,16 +130,35 @@ const Index = () => {
     }));
   };
 
+  const handleImageLoad = (src: string) => {
+    setImageLoading(prev => ({ ...prev, [src]: false }));
+  };
+
+  const handleImageError = (src: string) => {
+    setImageLoading(prev => ({ ...prev, [src]: false }));
+    setImageErrors(prev => ({ ...prev, [src]: true }));
+  };
+
+  const handleImageClick = (project: any, imageIndex: number) => {
+    setSelectedProject({ ...project, selectedImageIndex: imageIndex });
+  };
+
+  const openEmail = () => {
+    window.open(`mailto:${contactInfo.email}`, '_blank');
+  };
+
+  const openLink = (url: string) => {
+    window.open(url, '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
-      {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl animate-bounce"></div>
       </div>
 
-      {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-6">
         <div className="max-w-6xl mx-auto text-center z-10">
           <motion.div
@@ -139,7 +167,6 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             className="mb-8"
           >
-            {/* Profile Picture */}
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
@@ -150,6 +177,8 @@ const Index = () => {
                 src="https://malik-ibrar-ai.vercel.app/static/media/portfolio.17fef9e14b5795557f0a.png"
                 alt="Malik Ibrar"
                 className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto border-4 border-green-400 shadow-2xl shadow-green-400/20"
+                onLoad={() => handleImageLoad("profile")}
+                onError={() => handleImageError("profile")}
               />
             </motion.div>
 
@@ -167,7 +196,6 @@ const Index = () => {
             </div>
           </motion.div>
 
-          {/* Animated Tech Stack */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -195,23 +223,28 @@ const Index = () => {
             </div>
           </motion.div>
 
-          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
           >
-            <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105">
+            <Button 
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
+            >
               View My Work <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button variant="outline" className="border-gray-600 text-white hover:bg-gray-800 px-8 py-3 rounded-full transition-all duration-300 hover:scale-105">
+            <Button 
+              onClick={openEmail}
+              variant="outline" 
+              className="border-gray-600 text-white hover:bg-gray-800 px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
+            >
               <Mail className="mr-2 h-4 w-4" />
               Get In Touch
             </Button>
           </motion.div>
 
-          {/* Scroll Indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -223,7 +256,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
       <section className="py-20 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -281,8 +313,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Projects Carousel Section */}
-      <section className="py-20 px-6 relative z-10">
+      <section id="projects" className="py-20 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -309,16 +340,32 @@ const Index = () => {
                   index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
                 }`}
               >
-                {/* Project Images */}
                 <div className={`relative ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
                   <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm overflow-hidden">
                     <CardContent className="p-0">
                       <div className="relative h-64 md:h-80">
-                        <img
-                          src={project.images[currentProjectImage[project.id] || 0]}
-                          alt={`${project.title} screenshot`}
-                          className="w-full h-full object-cover"
-                        />
+                        {imageLoading[project.images[currentProjectImage[project.id] || 0]] && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-slate-700 animate-pulse">
+                            <div className="text-gray-400">Loading...</div>
+                          </div>
+                        )}
+                        {imageErrors[project.images[currentProjectImage[project.id] || 0]] ? (
+                          <div className="w-full h-full flex items-center justify-center bg-slate-700 text-gray-400">
+                            <div className="text-center">
+                              <Code2 className="h-12 w-12 mx-auto mb-2" />
+                              <p>Image not available</p>
+                            </div>
+                          </div>
+                        ) : (
+                          <img
+                            src={project.images[currentProjectImage[project.id] || 0]}
+                            alt={`${project.title} screenshot`}
+                            className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+                            onClick={() => handleImageClick(project, currentProjectImage[project.id] || 0)}
+                            onLoad={() => handleImageLoad(project.images[currentProjectImage[project.id] || 0])}
+                            onError={() => handleImageError(project.images[currentProjectImage[project.id] || 0])}
+                          />
+                        )}
                         {project.images.length > 1 && (
                           <>
                             <button
@@ -352,7 +399,6 @@ const Index = () => {
                   </Card>
                 </div>
 
-                {/* Project Details */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                   <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300">
                     <CardContent className="p-8">
@@ -384,7 +430,7 @@ const Index = () => {
                             variant="outline" 
                             size="sm"
                             className="border-green-400 text-green-400 hover:bg-green-400/10"
-                            onClick={() => window.open(project.modelCard, '_blank')}
+                            onClick={() => openLink(project.modelCard)}
                           >
                             <ExternalLink className="mr-2 h-4 w-4" />
                             Model Card
@@ -404,7 +450,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Experience Section */}
       <section className="py-20 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -465,7 +510,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Tech Stack Section */}
       <section className="py-20 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -503,7 +547,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
       <section className="py-20 px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
@@ -520,11 +563,18 @@ const Index = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-              <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg">
+              <Button 
+                onClick={openEmail}
+                className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg"
+              >
                 <Mail className="mr-2 h-5 w-5" />
                 Start a Conversation
               </Button>
-              <Button variant="outline" className="border-gray-600 text-white hover:bg-gray-800 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg">
+              <Button 
+                onClick={() => openLink(contactInfo.github)}
+                variant="outline" 
+                className="border-gray-600 text-white hover:bg-gray-800 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg"
+              >
                 <Github className="mr-2 h-5 w-5" />
                 View GitHub
               </Button>
@@ -532,13 +582,15 @@ const Index = () => {
 
             <div className="flex justify-center space-x-8">
               {[
-                { icon: Github, label: "GitHub" },
-                { icon: Linkedin, label: "LinkedIn" },
-                { icon: Mail, label: "Email" }
+                { icon: Github, label: "GitHub", action: () => openLink(contactInfo.github) },
+                { icon: Linkedin, label: "LinkedIn", action: () => openLink(contactInfo.linkedin) },
+                { icon: Twitter, label: "Twitter", action: () => openLink(contactInfo.twitter) },
+                { icon: Mail, label: "Email", action: openEmail }
               ].map((social) => (
                 <motion.div
                   key={social.label}
                   whileHover={{ scale: 1.2, y: -5 }}
+                  onClick={social.action}
                   className="p-4 bg-slate-800/50 rounded-full border border-slate-700 hover:border-green-400 transition-all duration-300 cursor-pointer"
                 >
                   <social.icon className="h-6 w-6 text-gray-400 hover:text-green-400 transition-colors" />
@@ -549,7 +601,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="py-8 px-6 border-t border-slate-800 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-gray-400">
@@ -557,6 +608,76 @@ const Index = () => {
           </p>
         </div>
       </footer>
+
+      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-slate-900 border-slate-700">
+          {selectedProject && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold text-white flex items-center">
+                  <span className="mr-3 text-green-400">{selectedProject.icon}</span>
+                  {selectedProject.title}
+                </DialogTitle>
+                <DialogDescription className="text-gray-300 text-lg">
+                  {selectedProject.description}
+                </DialogDescription>
+              </DialogHeader>
+              
+              <div className="space-y-6">
+                <div className="relative">
+                  <img
+                    src={selectedProject.images[selectedProject.selectedImageIndex]}
+                    alt={`${selectedProject.title} screenshot`}
+                    className="w-full h-auto rounded-lg"
+                    onError={() => handleImageError(selectedProject.images[selectedProject.selectedImageIndex])}
+                  />
+                  {selectedProject.images.length > 1 && (
+                    <div className="flex justify-center mt-4 space-x-2">
+                      {selectedProject.images.map((image: string, index: number) => (
+                        <button
+                          key={index}
+                          onClick={() => setSelectedProject({...selectedProject, selectedImageIndex: index})}
+                          className={`w-3 h-3 rounded-full transition-all ${
+                            index === selectedProject.selectedImageIndex ? 'bg-green-400' : 'bg-gray-600'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+                
+                <div>
+                  <h4 className="text-lg font-semibold text-blue-400 mb-2">Key Features:</h4>
+                  <p className="text-gray-300">{selectedProject.features}</p>
+                </div>
+                
+                <div>
+                  <h4 className="text-lg font-semibold text-blue-400 mb-2">Technologies Used:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tech.map((tech: string) => (
+                      <span key={tech} className="px-3 py-1 bg-slate-700 text-blue-400 rounded-full text-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                {selectedProject.modelCard && (
+                  <div className="flex justify-center">
+                    <Button 
+                      onClick={() => openLink(selectedProject.modelCard)}
+                      className="bg-green-500 hover:bg-green-600 text-black font-semibold"
+                    >
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      View Model Card
+                    </Button>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
