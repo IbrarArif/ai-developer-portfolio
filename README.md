@@ -1,73 +1,79 @@
-# Welcome to your Lovable project
+<p align="center">
+  <img src="public/image.png" alt="Portfolio Banner" width="400"/>
+</p>
 
-## Project info
+# AI Developer Portfolio – Malik Ibrar
 
-**URL**: https://lovable.dev/projects/9d8400b3-0b96-4ba8-98a5-e822f8df5820
+Welcome to my AI Developer Portfolio! This website showcases my work, skills, and experience as a GenAI Developer, AI Product Builder, and NLP & Agents Expert.
 
-## How can I edit this code?
+## 🚀 About
 
-There are several ways of editing your application.
+This portfolio highlights:
 
-**Use Lovable**
+- **Featured AI Projects**: Innovative solutions in GenAI, video generation, model fine-tuning, and audio classification.
+- **Tech Arsenal**: Modern stack including FastAPI, React.js, Tailwind CSS, OpenAI, Hugging Face, LangChain, Docker, and more.
+- **Experience**: My journey in building intelligent systems that learn, adapt, and inspire.
+- **Contact & Socials**: Easy ways to connect via email, GitHub, LinkedIn, and Twitter.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9d8400b3-0b96-4ba8-98a5-e822f8df5820) and start prompting.
+## 🖼️ Preview
 
-Changes made via Lovable will be committed automatically to this repo.
+<p align="center">
+  <img src="public/image.png" alt="Portfolio Screenshot" width="600"/>
+</p>
 
-**Use your preferred IDE**
+## ✨ Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Animated hero section with typewriter effect
+- Interactive project gallery with image previews
+- Modern, responsive UI with Tailwind CSS
+- Tech stack and experience sections
+- Contact and social links
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📂 Project Structure
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+  pages/Index.tsx      # Main portfolio page
+  components/ui/       # UI components (Button, Card, etc.)
+  hooks/               # Custom React hooks
+  lib/                 # Utility functions
+public/
+  image.png            # Portfolio banner image
+  ...                  # Other static assets
 ```
 
-**Edit a file directly in GitHub**
+## 🛠️ Tech Stack
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **Frontend**: React.js, TypeScript, Tailwind CSS, Framer Motion
+- **Backend**: FastAPI (for AI projects)
+- **AI/ML**: OpenAI, Hugging Face, LangChain, CrewAI, FAISS, ChromaDB
+- **DevOps**: Docker
 
-**Use GitHub Codespaces**
+## 📦 Getting Started
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. **Install dependencies:**
+   ```sh
+   npm install
+   # or
+   bun install
+   ```
+2. **Run the development server:**
+   ```sh
+   npm run dev
+   # or
+   bun run dev
+   ```
+3. **Open** [http://localhost:8080](http://localhost:8080) in your browser.
 
-## What technologies are used for this project?
+## 📬 Contact
 
-This project is built with:
+- **Email:** malikibrarbhutta@gmail.com
+- **GitHub:** [IbrarArif](https://github.com/IbrarArif)
+- **LinkedIn:** [malik-ibrar](https://www.linkedin.com/in/malik-ibrar/)
+- **Twitter:** [MalikIbrar112](https://twitter.com/MalikIbrar112)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/9d8400b3-0b96-4ba8-98a5-e822f8df5820) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+<p align="center">
+  <b>Building Intelligent Systems That Learn, Adapt, and Inspire</b>
+</p>

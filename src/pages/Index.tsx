@@ -102,11 +102,12 @@ const Index = () => {
     { name: "Hugging Face", icon: "🤗", description: "Transformers and model hub" },
     { name: "LangChain", icon: "🔗", description: "LLM application framework" },
     { name: "CrewAI", icon: "👥", description: "Multi-agent AI systems" },
-    { name: "FAISS", icon: "🔍", description: "Vector similarity search" },
-    { name: "ChromaDB", icon: "🗄️", description: "Vector database" },
+    { name: "FAISS", icon: "🔍", description: "Vector Store" },
+    { name: "ChromaDB", icon: "🗄️", description: "Vector Store" },
     { name: "Docker", icon: "🐳", description: "Containerization platform" },
     { name: "Ollama", icon: "🦙", description: "Local LLM deployment" },
-    { name: "VLLM", icon: "⚡", description: "High-throughput LLM serving" }
+    { name: "VLLM", icon: "⚡", description: "High-throughput LLM serving" },
+    { name: "FastMCP", icon: "⚡", description: "A standard way to expose tools to LLMs" }
   ];
 
   const contactInfo = {
@@ -285,7 +286,7 @@ const Index = () => {
                     With a solid foundation in AI, machine learning, and deep learning, I specialize in building end-to-end Generative AI applications using technologies like FastAPI, React.js, LangChain, OpenAI, Hugging Face, and Vector Databases.
                   </p>
                   <p className="text-gray-300 leading-relaxed">
-                    I'm actively working on LLMs, AI agents (OpenAI Agent SDK, Hugging Face Agent, SmolAgent, Crew AI, LangGraph, LlamaIndex, Ollama, VLLM) and retrieval-augmented generation systems (RAG).
+                    I'm actively working on LLMs, AI agents (OpenAI Agent SDK, SmolAgent, Crew AI, LangGraph, LlamaIndex, Ollama, VLLM) and retrieval-augmented generation systems (RAG).
                   </p>
                 </CardContent>
               </Card>
@@ -604,7 +605,7 @@ const Index = () => {
       <footer className="py-8 px-6 border-t border-slate-800 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-gray-400">
-            © 2025 Malik Ibrar - GenAI Developer. Built with React, Tailwind CSS, and Framer Motion.
+            © 2025 Malik Ibrar - GenAI Developer.
           </p>
         </div>
       </footer>
