@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="public/image.png" alt="Portfolio Banner" width="400"/>
-</p>
-
 # AI Developer Portfolio – Malik Ibrar
 
 Welcome to my AI Developer Portfolio! This website showcases my work, skills, and experience as a GenAI Developer, AI Product Builder, and NLP & Agents Expert.
