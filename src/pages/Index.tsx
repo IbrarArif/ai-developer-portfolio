@@ -13,7 +13,7 @@ const Index = () => {
   const [imageLoading, setImageLoading] = useState<{[key: string]: boolean}>({});
   const [imageErrors, setImageErrors] = useState<{[key: string]: boolean}>({});
   
-  const fullText = "Building the Future with AI, Multiple Products at Once";
+  const fullText = "Building Intelligent Systems That Learn, Adapt, and Inspire";
   const skills = ["FastAPI", "React.js", "LangChain", "OpenAI", "Vector DBs", "Docker"];
   
   useEffect(() => {
@@ -238,7 +238,7 @@ const Index = () => {
             <Button 
               onClick={openEmail}
               variant="outline" 
-              className="border-gray-600 text-white hover:bg-gray-800 px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
+              className="border-white/30 bg-white/10 text-white hover:bg-white/20 hover:border-white/50 px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 backdrop-blur-sm"
             >
               <Mail className="mr-2 h-4 w-4" />
               Get In Touch
@@ -573,7 +573,7 @@ const Index = () => {
               <Button 
                 onClick={() => openLink(contactInfo.github)}
                 variant="outline" 
-                className="border-gray-600 text-white hover:bg-gray-800 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg"
+                className="border-white/30 bg-white/10 text-white hover:bg-white/20 hover:border-white/50 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg backdrop-blur-sm"
               >
                 <Github className="mr-2 h-5 w-5" />
                 View GitHub
